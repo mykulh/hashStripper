@@ -27,13 +27,15 @@ import java.security.NoSuchAlgorithmException;
 				BufferedReader br = new BufferedReader(new FileReader(args[0]));
 				FileWriter hfw = new FileWriter(args[0] + ".hashesfound");
 				BufferedWriter hashes_out = new BufferedWriter(hfw);
-				FileWriter ofw = new FileWriter(args[0] + ".hashesremoved");
+
+				FileWriter ofw = new FileWriter(args[0] + ".with_hashes_removed");
 				BufferedWriter others_out = new BufferedWriter(ofw);
+				
 				String line;
 				System.out.println("List loaded, checking lines....");
 				while ((line = br.readLine()) != null) {
-					if(check0(line)){writehash(line);}
-					if(check400(line)){writehash(line);}
+					if(check0(line)){writehash(line, 0);}
+					if(check400(line)){writehash(line, 400);}
 							
 					
 					
@@ -66,14 +68,9 @@ import java.security.NoSuchAlgorithmException;
 		}
 	}
 	
-	private static void writehash(String hash) throws IOException{
+	private static void writehash(String hash, int type) throws IOException{
 				Main.hashes_out.write(hash);
 					Main.hashes_out.newLine();
 						hashCount++;
 		}
-		
 	}
-	
-	
-	//for (char ch: line.toCharArray()) {
-	//	if(Character.toString(ch).equals("$")){
