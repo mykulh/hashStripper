@@ -26,7 +26,7 @@ import java.security.NoSuchAlgorithmException;
 				long hashCount = 0;
 				BufferedReader br = new BufferedReader(new FileReader(args[0]));
 				FileWriter hfw = new FileWriter(args[0] + ".hashesfound");
-				BufferedWriter hashes_out = new BufferedWriter(hfw);
+				hashes_out = new BufferedWriter(hfw);
 
 				FileWriter ofw = new FileWriter(args[0] + ".with_hashes_removed");
 				BufferedWriter others_out = new BufferedWriter(ofw);
