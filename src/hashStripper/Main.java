@@ -26,23 +26,28 @@ package hashStripper;
 				FileWriter fw = new FileWriter(args[0] + ".hashesremoved");
 				BufferedWriter other_out = new BufferedWriter(fw);
 				String line;
-				System.out.println("List loaded, checking characters....");
+				System.out.println("List loaded, checking lines....");
 				while ((line = br.readLine()) != null) {
-				if((line.startsWith("$H$") || line.startsWith("$P$")) && line.length() == 34){
-					//for (char ch: line.toCharArray()) {
-					/	if(Character.toString(ch).equals("$")){
-							out.write(line);
-							out.newLine();
-							hashCount++;
-						}
-				///	}
-					county++;
+					if((line.startsWith("$H$") || line.startsWith("$P$")) && line.length() == 34){
+						//for (char ch: line.toCharArray()) {
+						//	if(Character.toString(ch).equals("$")){
+								hashes_out.write(line);
+								hashes_out.newLine();
+								hashCount++;
+							}
+					else{
+						other_out.write(line);
+						other_out.newLine();
+						hashCount++;
+					}
+					///	}
+						county++;
+					}
 				}
-			}
 				br.close();
 				hashes_out.close();
 				others_out.close();
-				System.out.println("Finished. Lines processed: " + county + " newlines saved " + hashCount + ".");
+				System.out.println("Finished. Lines processed: " + county + " potential hashes saved " + hashCount + ".");
 			}
 			
 		}
