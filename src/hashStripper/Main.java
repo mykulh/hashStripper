@@ -34,8 +34,11 @@ import java.security.NoSuchAlgorithmException;
 				String line;
 				System.out.println("List loaded, checking lines....");
 				while ((line = br.readLine()) != null) {
-					if(check0(line)){writehash(line, 0);}
-					if(check400(line)){writehash(line, 400);}
+					if(check0(line)){writehash(line, 0);hashCount++;}
+					if(check100(line)){writehash(line, 100);hashCount++;}
+					if(check400(line)){writehash(line, 400);hashCount++;}
+					if(check500(line)){writehash(line, 500);hashCount++;}
+					if(check1400(line)){writehash(line, 1400);hashCount++;}
 							
 					
 					
@@ -59,7 +62,13 @@ import java.security.NoSuchAlgorithmException;
 			return false;
 			}
 		}
-		
+	private static boolean check100(String val){
+		if(val.length() == 40 && val.matches("-?[0-9a-fA-F]+")){
+		return true;}
+		else{
+		return false;
+		}
+	}
 	private static boolean check400(String val){
 		if((val.startsWith("$H$") || val.startsWith("$P$")) && val.length() == 34){
 		return true;}
@@ -67,10 +76,23 @@ import java.security.NoSuchAlgorithmException;
 		return false;
 		}
 	}
-	
+	private static boolean check500(String val){
+		if(val.startsWith("$PHPS$") && val.length() == 34){
+		return true;}
+		else{
+		return false;
+		}
+	}
+	private static boolean check1400(String val){
+		if(val.length() == 64 && val.matches("-?[0-9a-fA-F]+")){
+		return true;}
+		else{
+		return false;
+		}
+	}
 	private static void writehash(String hash, int type) throws IOException{
 				Main.hashes_out.write(hash);
 					Main.hashes_out.newLine();
-						hashCount++;
+						
 		}
 	}
