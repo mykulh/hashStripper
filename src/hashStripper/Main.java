@@ -1,21 +1,18 @@
 package hashStripper;
 
-	import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 	public class Main {
 
 		private static BufferedWriter hashes_out;
-		@SuppressWarnings("unused")
 		private static long hashCount = 0;
 
-		public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
+		public static void main(String[] args) throws IOException{
 		
-
 			if(args.length == 0){
 				System.out.println("We need args!");
 				System.out.println("usage: java -jar hashStripper.jar <dictionary>");
@@ -23,22 +20,22 @@ import java.security.NoSuchAlgorithmException;
 			}
 			else{
 				int county = 0;
-				long hashCount = 0;
 				BufferedReader br = new BufferedReader(new FileReader(args[0]));
-				FileWriter hfw = new FileWriter(args[0] + ".hashesfound");
+				FileWriter hfw = new FileWriter(args[0] + ".hashes.csv");
 				hashes_out = new BufferedWriter(hfw);
 
-				FileWriter ofw = new FileWriter(args[0] + ".with_hashes_removed");
+				FileWriter ofw = new FileWriter(args[0] + ".with_hashes_removed.dic");
 				BufferedWriter others_out = new BufferedWriter(ofw);
 				
 				String line;
 				System.out.println("List loaded, checking lines....");
 				while ((line = br.readLine()) != null) {
-					if(check0(line)){writehash(line, 0);hashCount++;}
-					if(check100(line)){writehash(line, 100);hashCount++;}
-					if(check400(line)){writehash(line, 400);hashCount++;}
-					if(check500(line)){writehash(line, 500);hashCount++;}
-					if(check1400(line)){writehash(line, 1400);hashCount++;}
+					if(typeCheck.check0(line)){writehash(line, 0);hashCount++;}
+					if(typeCheck.check21(line)){writehash(line, 21);hashCount++;}
+					if(typeCheck.check100(line)){writehash(line, 100);hashCount++;}
+					if(typeCheck.check400(line)){writehash(line, 400);hashCount++;}
+					if(typeCheck.check500(line)){writehash(line, 500);hashCount++;}
+					if(typeCheck.check1400(line)){writehash(line, 1400);hashCount++;}
 							
 					
 					
@@ -55,43 +52,9 @@ import java.security.NoSuchAlgorithmException;
 			}
 			
 		}
-	private static boolean check0(String val){
-			if(val.length() == 32 && val.matches("-?[0-9a-fA-F]+")){
-			return true;}
-			else{
-			return false;
-			}
-		}
-	private static boolean check100(String val){
-		if(val.length() == 40 && val.matches("-?[0-9a-fA-F]+")){
-		return true;}
-		else{
-		return false;
-		}
-	}
-	private static boolean check400(String val){
-		if((val.startsWith("$H$") || val.startsWith("$P$")) && val.length() == 34){
-		return true;}
-		else{
-		return false;
-		}
-	}
-	private static boolean check500(String val){
-		if(val.startsWith("$PHPS$") && val.length() == 34){
-		return true;}
-		else{
-		return false;
-		}
-	}
-	private static boolean check1400(String val){
-		if(val.length() == 64 && val.matches("-?[0-9a-fA-F]+")){
-		return true;}
-		else{
-		return false;
-		}
-	}
+
 	private static void writehash(String hash, int type) throws IOException{
-				Main.hashes_out.write(hash);
+				Main.hashes_out.write(type + "\t" + hash);
 					Main.hashes_out.newLine();
 						
 		}
