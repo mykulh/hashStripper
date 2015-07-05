@@ -4,11 +4,11 @@ A simple program to run over large wordlists / dictionaries to try and clean out
 Download the project or just the export/hashStipper.jar
 
 Usage:
-java -jar hashStripper.jar <dictionary to strip> 
+java -jar hashStripper.jar dictionary_to_strip 
 
 Two files are created
-<dictionary to strip>.hashes.csv
-<dictionary to strip>.hashes_removed.dic
+dictionary_to_strip.hashes.csv
+dictionary_to_strip.hashes_removed.dic
 
 The original wordlist/dictionary should be left alone, just in case something goes wrong.
 
