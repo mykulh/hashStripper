@@ -30,14 +30,20 @@ import java.io.IOException;
 				String line;
 				System.out.println("List loaded, checking lines....");
 				while ((line = br.readLine()) != null) {
-					if(typeCheck.check0(line)){writehash(line, 0);hashCount++;}
-					if(typeCheck.check21(line)){writehash(line, 21);hashCount++;}
-					if(typeCheck.check100(line)){writehash(line, 100);hashCount++;}
-					if(typeCheck.check400(line)){writehash(line, 400);hashCount++;}
-					if(typeCheck.check500(line)){writehash(line, 500);hashCount++;}
-					if(typeCheck.check1400(line)){writehash(line, 1400);hashCount++;}
-							
-					
+					if(typeCheck.check0(line)){writehash(line, 0);hashCount++; continue;}
+					if(typeCheck.check21(line)){writehash(line, 21);hashCount++; continue;}
+					if(typeCheck.check112(line)){writehash(line, 112);hashCount++; continue;}
+					if(typeCheck.check122(line)){writehash(line, 122);hashCount++; continue;}
+					if(typeCheck.check124(line)){writehash(line, 124);hashCount++; continue;}
+					if(typeCheck.check200(line)){writehash(line, 200);hashCount++; continue;}
+					if(typeCheck.check300(line)){writehash(line, 300);hashCount++; continue;}
+					if(typeCheck.check100(line)){writehash(line, 100);hashCount++; continue;}
+					if(typeCheck.check400(line)){writehash(line, 400);hashCount++; continue;}
+					if(typeCheck.check500(line)){writehash(line, 500);hashCount++; continue;}
+					if(typeCheck.check1400(line)){writehash(line, 1400);hashCount++; continue;}
+					if(typeCheck.check3200(line)){writehash(line, 3200);hashCount++; continue;}		
+					if(typeCheck.check9200(line)){writehash(line, 9200);hashCount++; continue;}
+					if(typeCheck.check9300(line)){writehash(line, 9300);hashCount++; continue;}
 					
 					else{
 						others_out.write(line);
