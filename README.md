@@ -7,7 +7,9 @@ Usage:
 java -jar hashStripper.jar dictionary_to_strip 
 
 Two files are created
+
 dictionary_to_strip.hashes.csv
+and
 dictionary_to_strip.hashes_removed.dic
 
 The original wordlist/dictionary should be left alone, just in case something goes wrong.
