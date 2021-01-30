@@ -1,7 +1,7 @@
 # hashStripper
 
 A simple program to run over large wordlists / dictionaries to try and clean out any hashes in the wordlist by mistake.
-Download the project or just the export/hashStipper.jar
+Download the project or just use the export/hashStipper.jar
 
 Usage:
 java -jar hashStripper.jar dictionary_to_strip 
